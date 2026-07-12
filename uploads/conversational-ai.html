@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conversational AI - Case Study - Sriraksha Murali</title>
+<meta name="description" content="Case study: designing a conversational AI feature that enables nursing students to hold realistic patient dialogues - lifting chat open rate 25% and feature satisfaction 50%.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<main>
+  <div class="wrap">
+
+    <section class="case-hero" aria-label="Case study introduction">
+<span class="eyebrow">Case study · CAE Healthcare · AI feature design</span>
+      <h1>Designing a conversational AI for nursing training</h1>
+      <p class="lede">Talking to patients is a skill nursing students are formally assessed on - but the simulation only let them communicate through preset phrases. I designed a conversational AI feature, with detailed voice and text workflows, that lets students hold realistic, natural patient dialogues.</p>
+      <div class="meta-ledger">
+        <div>
+          <div class="label">Role</div>
+          <div class="value">UX Designer - interaction design, conversation workflows</div>
+        </div>
+        <div>
+          <div class="label">Collaborators</div>
+          <div class="value">Engineering - aligning design with technical capabilities</div>
+        </div>
+        <div>
+          <div class="label">Outcome</div>
+          <div class="value">+25% chat open rate · +50% feature satisfaction</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section" aria-label="The problem">
+      <h2><span class="kicker">The problem</span>A conversation you couldn't actually have</h2>
+      <blockquote class="pull">"The hardest thing was to communicate with the patient with preset things, because maybe not everything you want to communicate is in there."
+        <cite>- Participant, usability test</cite>
+      </blockquote>
+      <div class="prose">
+        <p>The original patient conversation was a long menu of pre-written phrases. Students scrolled, hunted, and settled for the closest available option - the exact opposite of the judgment and empathy the exercise was meant to build. If the thing you wanted to say wasn't on the list, you simply couldn't say it.</p>
+        <p>For a skill that instructors formally assess, the interface was practicing students in the wrong behavior: <strong>selecting</strong> instead of <strong>communicating</strong>.</p>
+      </div>
+    </section>
+
+    <section class="case-section" aria-label="The design">
+      <h2><span class="kicker">The design</span>Two ways to talk, one natural conversation</h2>
+      <div class="prose">
+        <p>The redesign replaced the preset list with open conversation through <strong>two input modes</strong> - voice ("Press to speak", with a live "Listening…" state and an editable transcription before sending) and free text. Students switch between them with one tap, so the mode fits the moment: speaking aloud for realism, typing in noisy sim labs.</p>
+        <p>I mapped the complete conversational flows for both modes - empty states that invite the first message, response states, typing indicators, and crucially the <strong>failure states</strong>: when the patient doesn't understand, the design recovers gracefully with "Did you mean?" suggestions instead of a dead end.</p>
+      </div>
+      <figure class="shot reveal">
+        <img src="images/ai-flow.jpg" alt="Text to voice conversational flow showing empty state, first exchange, typing indicator, response, and error recovery with Did you mean suggestions" loading="lazy">
+        <figcaption>The conversational flow - from empty state through error recovery, designed before a line of code.</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <img src="images/chat-states.jpg" alt="Chat component states: idle, hover and selected patient cards, plus voice and text conversation panels" loading="lazy">
+        <figcaption>Component states - idle, hover, selected - documented for engineering handoff.</figcaption>
+      </figure>
+      <div class="prose">
+        <p>Every state was specified in detail and reviewed with engineering to align the design with what the AI could technically deliver - the collaboration that turned realistic dialogue from a concept into a shipped feature.</p>
+      </div>
+    </section>
+
+    <section class="case-section" aria-label="The result">
+      <h2><span class="kicker">The result</span>It felt realistic</h2>
+      <blockquote class="pull">"Conversing with patient is an important part of being a nurse. Nursing students are assessed based on their communication skills. I enjoyed having natural conversations with the patient. It felt realistic."
+        <cite>- Instructor feedback</cite>
+      </blockquote>
+      <figure class="shot reveal">
+        <img src="images/ai-after.jpg" alt="The shipped conversational interface: a natural patient chat with voice input, listening state and editable transcription" loading="lazy">
+        <figcaption>The shipped experience - natural dialogue, in the student's own words.</figcaption>
+      </figure>
+      <div class="meta-ledger">
+        <div>
+          <div class="label">Chat open rate</div>
+          <div class="value" style="font-family: var(--mono); font-size: 1.5rem;">+25%</div>
+        </div>
+        <div>
+          <div class="label">Feature satisfaction</div>
+          <div class="value" style="font-family: var(--mono); font-size: 1.5rem;">+50%</div>
+        </div>
+        <div>
+          <div class="label">Shipped with</div>
+          <div class="value">Engineering - designed within real technical constraints</div>
+        </div>
+      </div>
+    </section>
+
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <span>© 2026 Sriraksha Murali</span>
+    <span>Designed with intention · Built without templates</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sriraksha Murali - UX Designer</title>
+<meta name="description" content="Sriraksha Murali is a UX designer who solves complex problems with data, insight and intention. Healthcare, banking and simulation design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Full-card click: the case study link stretches over the whole card */
+  .project { position: relative; }
+  .project .project-link::after { content: ""; position: absolute; inset: 0; border-radius: 14px; }
+  .project:has(.project-link) { cursor: pointer; }
+  .project:has(.project-link:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* Experiments: two-column, blog style */
+  .exp-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+  .exp-col-title {
+    font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+    padding-bottom: 12px; border-bottom: 1px solid var(--hairline);
+  }
+  .exp-entry { padding: 20px 0; border-bottom: 1px solid var(--hairline); }
+  .exp-entry .tag { display: block; margin-bottom: 6px; }
+  .exp-entry h4 {
+    font-family: var(--display); font-weight: 600; font-size: 1.1rem;
+    letter-spacing: -0.01em; margin-bottom: 6px; color: var(--ink);
+  }
+  .exp-entry p { font-size: 0.92rem; color: var(--ink-soft); }
+  .exp-entry .project-link { display: inline-block; margin-top: 14px; font-size: 0.88rem; }
+  @media (max-width: 820px) {
+    .exp-cols { grid-template-columns: 1fr; }
+    .exp-cols .exp-col + .exp-col { margin-top: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="logo" href="#top">Sriraksha<span>.</span></a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#work">Work</a>
+          <a href="#side">Experiments</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Introduction">
+      <span class="eyebrow">Award-winning UX designer · Toronto</span>
+      <h1>Sriraksha Murali</h1>
+      <p class="thesis">I solve complex problems with <em>data, insight and intention</em> - designing experiences for healthcare, banking and simulation that feel effortless to the people who use them.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#work">View my work</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/sriraksha-murali/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- Featured work -->
+    <section id="work" aria-label="Featured projects">
+      <div class="section-head reveal">
+        <h2>Featured work</h2>
+        <span class="count">Outcomes measured, not assumed</span>
+      </div>
+      <div class="featured">
+        <article class="project reveal">
+          <div class="cover"><img src="images/simulated-training.jpg" alt="CAE Embody simulated training platform showing a patient assessment screen on a laptop" loading="lazy"></div>
+          <span class="tag">End-to-end product design · Strategy</span>
+          <h3>Designing an interactive product for simulated training</h3>
+          <p>Led the end-to-end design of two interactive simulated training modules, combining user research, strategic insight and detailed interaction design into an intuitive, engaging learning experience.</p>
+          <div class="ledger">
+            <div class="metric">
+              <div class="value">100%</div>
+              <div class="label">module completion rate</div>
+            </div>
+            <div class="metric">
+              <div class="value">4</div>
+              <div class="label">avg. attempts to pass</div>
+            </div>
+          </div>
+          <span class="award">🏆 CAE Excellence Award</span>
+          <a class="project-link" href="simulated-training.html">Read the case study →</a>
+        </article>
+
+        <article class="project reveal">
+          <div class="cover"><img src="images/conversational-ai.jpg" alt="Conversational AI patient chat interface with voice and text input for nursing training" loading="lazy"></div>
+          <span class="tag">AI feature design · Conversational AI</span>
+          <h3>Designing a conversational AI for nursing training</h3>
+          <p>Designed a conversational AI feature with detailed workflows, collaborating with engineering to align with technical capabilities - delivering a chatbot that enables realistic patient dialogues.</p>
+          <div class="ledger">
+            <div class="metric">
+              <div class="value">+25%</div>
+              <div class="label">chat open rate</div>
+            </div>
+            <div class="metric">
+              <div class="value">+50%</div>
+              <div class="label">feature satisfaction</div>
+            </div>
+          </div>
+          <span class="award">Shipped with Engineering</span>
+          <a class="project-link" href="conversational-ai.html">Read the case study →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- All projects -->
+    <section aria-label="More projects">
+      <div class="section-head reveal">
+        <h2>More projects</h2>
+        <span class="count">02</span>
+      </div>
+      <div class="plist">
+        <a class="plist-item reveal" href="portable-health.html">
+          <div class="thumb"><img src="images/portable-health.jpg" alt="Portable Health mobile app showing patient dashboard and medical history screens" loading="lazy"></div>
+          <div>
+            <span class="tag">Mobile app · Conceptual</span>
+            <h3>Portable Health: making medical records effortless</h3>
+            <p>Reducing friction in healthcare by designing a better way to access and transfer medical information - so patients tell their story once, and are heard.</p>
+          </div>
+        </a>
+        <a class="plist-item reveal" href="fintech.html">
+          <div class="thumb"><img src="images/fintech.jpg" alt="LifeLink fintech platform landing pages with e-wallet and budgeting features" loading="lazy"></div>
+          <div>
+            <span class="tag">Visual design · Design system</span>
+            <h3>Elevating visual design for a FinTech platform</h3>
+            <p>Collaborated with a cross-functional team to improve the experience and visual design of a digital banking platform - building reusable design-system components and refining desktop layouts.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Experiments -->
+    <section id="side" aria-label="Experiments">
+      <div class="section-head reveal">
+        <h2>Experiments</h2>
+        <span class="count">Built with AI-first tools</span>
+      </div>
+      <div class="exp-cols">
+        <div class="exp-col reveal">
+          <h3 class="exp-col-title">Dev projects</h3>
+          <article class="exp-entry">
+            <span class="tag">Claude Code · Shipped</span>
+            <h4>Baby monitoring app</h4>
+            <p>Turned two ordinary phones into a peace-of-mind device - one captures audio, the other gets real-time alerts. Designed and built end-to-end.</p>
+          </article>
+          <article class="exp-entry">
+            <span class="tag">MIT App Inventor · User testing</span>
+            <h4>Fitness tracking app</h4>
+            <p>Built for motivation: a goal-tracking app that nudges users to achieve their fitness goals, designed and refined through user testing.</p>
+          </article>
+        </div>
+        <div class="exp-col reveal">
+          <h3 class="exp-col-title">Design only</h3>
+          <article class="exp-entry">
+            <span class="tag">Figma Make · Claude Design</span>
+            <h4>Travel journal app</h4>
+            <p>A complete journaling experience designed with an AI-first workflow, compressing concept-to-prototype into a rapid cycle.</p>
+            <a class="project-link" href="meridian-travel.html" target="_blank" rel="noopener">View Concept →</a>
+          </article>
+          <article class="exp-entry">
+            <span class="tag">AR · Conceptual</span>
+            <h4>AR shoe shopping experience</h4>
+            <p>Fashion suffers one of retail's highest return rates, often because the product in the box doesn't match the one in the mind. I redesigned the shopping experience with AR try-on, letting users see the shoe on their own feet before buying.</p>
+            <a class="project-link" href="https://www.behance.net/gallery/109053275/Redesigning-online-shoe-shopping" target="_blank" rel="noopener">View Concept On Behance →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" aria-label="About">
+      <div class="section-head reveal">
+        <h2>Why me</h2>
+        <span class="count">Five working principles</span>
+      </div>
+      <div class="principles">
+        <div class="principle reveal">
+          <h3>Research focused</h3>
+          <p>I dig beyond the surface to uncover insights that reveal what people truly need and why it matters.</p>
+        </div>
+        <div class="principle reveal">
+          <h3>Product mindset</h3>
+          <p>I think in outcomes, ensuring every solution aligns with both business goals and user needs.</p>
+        </div>
+        <div class="principle reveal">
+          <h3>Strategic thinker</h3>
+          <p>I connect patterns, anticipate challenges, and design solutions that work in the long term.</p>
+        </div>
+        <div class="principle reveal">
+          <h3>Data-driven decision maker</h3>
+          <p>I rely on evidence to guide decisions and measure success.</p>
+        </div>
+        <div class="principle reveal">
+          <h3>AI-fluent</h3>
+          <p>I weave AI tools like Claude Code and Figma Make into my workflow, turning ideas into functional prototypes fast, ones stakeholders can click, not just imagine.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact" aria-label="Contact">
+      <h2 class="reveal">Let's get connected.</h2>
+      <p class="reveal">I'm always happy to talk design, research, or an idea you can't stop thinking about.</p>
+      <div class="contact-links reveal">
+        <a class="btn btn-primary" href="mailto:sriraksha97@gmail.com">Email me</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/sriraksha-murali/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://www.behance.net/rakshaa" target="_blank" rel="noopener">Behance</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <span>© 2026 Sriraksha Murali</span>
+    <span>Designed with intention · Built without templates</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

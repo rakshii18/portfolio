@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulated Training - Case Study - Sriraksha Murali</title>
+<meta name="description" content="Case study: leading the end-to-end design of two interactive simulated training modules for CAE Embody, achieving 100% module completion.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<main>
+  <div class="wrap">
+
+    <section class="case-hero" aria-label="Case study introduction">
+<span class="eyebrow">Case study · CAE Healthcare</span>
+      <h1>Designing an interactive product for simulated training</h1>
+      <p class="lede">CAE Embody is a screen-based clinical simulation platform where nursing students practice caring for a virtual patient - safely, before they ever touch a real one. I led the end-to-end design of two interactive training modules, from usability research through shipped interface.</p>
+      <div class="meta-ledger">
+        <div>
+          <div class="label">Role</div>
+          <div class="value">UX Designer - research, interaction design, testing</div>
+        </div>
+        <div>
+          <div class="label">Collaborators</div>
+          <div class="value">Product owners, engineers, clinical subject-matter experts</div>
+        </div>
+        <div>
+          <div class="label">Recognition</div>
+          <div class="value">🏆 CAE Excellence Award</div>
+        </div>
+      </div>
+    </section>
+
+    <figure class="shot reveal">
+      <img src="images/embody-clean.jpg" alt="CAE Embody simulation showing a virtual patient and an assessments panel with options like auscultate lungs and assess pupils" loading="lazy">
+      <figcaption>CAE Embody - students assess and treat a simulated patient against the clock.</figcaption>
+    </figure>
+
+    <section class="case-section" aria-label="The challenge">
+      <h2><span class="kicker">The challenge</span>Make the interface disappear</h2>
+      <div class="prose">
+        <p>Simulation only works when students spend their attention on the <strong>patient</strong>, not the software. Usability testing told a different story: participants were burning cognitive effort fighting the interface - trying to remember instructions, decode their scores, and figure out what to do next.</p>
+        <p>I planned, designed, and conducted usability testing sessions, managing participant recruitment and scheduling while prioritizing availability and confidentiality. Synthesizing the findings surfaced three recurring friction themes - each one captured in the participants' own words.</p>
+      </div>
+    </section>
+
+    <section class="case-section" aria-label="Problem one">
+      <h2><span class="kicker">Problem 01 · Information overload</span>Everything, all at once</h2>
+      <blockquote class="pull">"I wish I could remember everything from the beginning."
+        <cite>- Participant, usability test</cite>
+      </blockquote>
+      <div class="prose">
+        <p>The welcome screen greeted students with a wall of text, followed by a 12-slide onboarding tour. By the time the simulation started, most of it was forgotten - and none of it was findable again.</p>
+        <p>The redesign followed one principle: <strong>tell people what they need, when they need it.</strong> I cut the welcome screen down to its essentials, reduced the onboarding tour from 12 slides to 4, and made key guidance recallable in context - like a "Watch Tutorial" link placed directly inside the Medication panel, at the exact moment a student might need it.</p>
+      </div>
+      <figure class="shot reveal">
+        <img src="images/information-overload.jpg" alt="Before and after comparison: a text-heavy welcome screen reduced to a concise version, and a medication panel with an in-context Watch Tutorial link" loading="lazy">
+        <figcaption>Before / after - a leaner welcome, a 4-slide tour, and recallable in-context help.</figcaption>
+      </figure>
+    </section>
+
+    <section class="case-section" aria-label="Problem two">
+      <h2><span class="kicker">Problem 02 · Scoring confusion</span>A score that punished progress</h2>
+      <blockquote class="pull">"Scoring is confusing."
+        <cite>- Participant, usability test</cite>
+      </blockquote>
+      <div class="prose">
+        <p>The original score was calculated against the <strong>entire</strong> simulation - including segments the student hadn't reached yet. A learner doing everything right could still see a demoralizing 36%, with no explanation of why or what to do about it.</p>
+        <p>The redesign reframed scoring around <strong>competencies</strong> - professionalism, assessments, treatments, interventions, communication - so students could see exactly where they stood in each skill. Alongside the overall score, we added guidance explaining how to advance from one segment of the simulation to the next, turning the score from a verdict into a map.</p>
+      </div>
+      <figure class="shot reveal">
+        <img src="images/scoring-design.jpg" alt="Before and after scoring design: the original 36% overall score against the whole simulation, and the redesigned competency-based score with guidance on advancing between segments" loading="lazy">
+        <figcaption>Before / after - scoring by competency, with guidance on how to advance.</figcaption>
+      </figure>
+    </section>
+
+    <section class="case-section" aria-label="Problem three">
+      <h2><span class="kicker">Problem 03 · System model ≠ cognitive model</span>Lost inside the simulation</h2>
+      <blockquote class="pull">"The unsureness of not knowing what to do next."
+        <cite>- Participant, usability test</cite>
+      </blockquote>
+      <div class="prose">
+        <p>The system knew the simulation had five segments. The students didn't. With no sense of where they were or what remained, uncertainty itself became the obstacle - a mismatch between how the system was structured and how learners thought about their progress.</p>
+        <p>The fix was to make the system's model visible: a persistent progress indicator - <strong>"3 of 5 segments completed"</strong> - with each day of the postoperative scenario listed and checked off. Students always know where they are, what's done, and what comes next.</p>
+      </div>
+      <figure class="shot reveal">
+        <img src="images/system-model.jpg" alt="Before and after: the original assessments view with no progress context, and the redesigned view with a 3 of 5 segments completed progress indicator" loading="lazy">
+        <figcaption>Before / after - progress made visible, uncertainty designed out.</figcaption>
+      </figure>
+    </section>
+
+    <section class="case-section" aria-label="Outcomes">
+      <h2><span class="kicker">Outcomes</span>Measured, not assumed</h2>
+      <div class="prose">
+        <p>The redesigned modules shipped after I presented the research outcomes and design rationale to product owners, engineers, and clinical subject-matter experts - driving alignment on what students actually needed.</p>
+      </div>
+      <div class="meta-ledger">
+        <div>
+          <div class="label">Module completion rate</div>
+          <div class="value" style="font-family: var(--mono); font-size: 1.5rem;">100%</div>
+        </div>
+        <div>
+          <div class="label">Avg. attempts to pass</div>
+          <div class="value" style="font-family: var(--mono); font-size: 1.5rem;">4</div>
+        </div>
+        <div>
+          <div class="label">Recognition</div>
+          <div class="value">CAE Excellence Award for communication, collaboration & innovation</div>
+        </div>
+      </div>
+    </section>
+
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <span>© 2026 Sriraksha Murali</span>
+    <span>Designed with intention · Built without templates</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
