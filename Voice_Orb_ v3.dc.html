@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #0a0d12; }
+    a { color: #ff7ac8; text-decoration: none; }
+    a:hover { color: #ffb0de; }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+    @keyframes labelFade {
+      0%, 100% { opacity: 0.55; }
+      50% { opacity: 1; }
+    }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 0; background: radial-gradient(circle at 50% 40%, #171235 0%, #08060f 70%); position: absolute; left: 0px; top: 8px">
+  
+</div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" time="4:30 PM" hint-size="390px,844px" style="position: absolute; left: 381px; top: 16px">
+
+    <div style="position: relative; width: 100%; height: 100%; background: #0c0926; overflow: hidden; display: flex; flex-direction: column; font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;" onClick="{{ toggleState }}">
+
+      <!-- ambient corner tints like the reference -->
+      <div style="position: absolute; left: -120px; bottom: -80px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(255,46,166,0.20) 0%, rgba(255,46,166,0) 70%); filter: blur(30px); pointer-events: none;"></div>
+      <div style="position: absolute; right: -120px; top: -80px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(107,80,255,0.22) 0%, rgba(107,80,255,0) 70%); filter: blur(30px); pointer-events: none;"></div>
+
+      <!-- app title -->
+      <div style="position: relative; z-index: 2; text-align: center; padding-top: 18px; letter-spacing: 6px; font-size: 12px; font-weight: 600; color: rgba(240,235,255,0.7); pointer-events: none;">AURA</div>
+
+      <!-- spacer -->
+      <div style="flex: 1;"></div>
+
+      <!-- state label (hidden while the nav widget is up) -->
+      <sc-if value="{{ labelVisible }}" hint-placeholder-val="{{ false }}">
+        <div style="position: relative; z-index: 2; text-align: center; padding-bottom: 76px; pointer-events: none;">
+          <div style="font-size: 17px; font-weight: 500; letter-spacing: 1.5px; animation: labelFade 2.2s ease-in-out infinite; transition: color 0.6s ease; color: {{ labelColor }};">{{ stateLabel }}</div>
+          <div style="margin-top: 10px; font-size: 12px; letter-spacing: 0.5px; color: rgba(215,205,235,0.35);">{{ micHint }}</div>
+        </div>
+      </sc-if>
+
+      <!-- navigation widget -->
+      <sc-if value="{{ navVisible }}" hint-placeholder-val="{{ true }}">
+        <div style="position: relative; z-index: 2; padding: 0 20px 48px; display: flex; flex-direction: column; gap: 12px;">
+
+          <!-- assistant message -->
+          <div style="display: flex; align-items: center; gap: 12px; padding: 0 4px 4px; justify-content: center">
+            <div style="width: 44px; height: 44px; border-radius: 50%; overflow: hidden; background: #0c0926; position: relative; flex-shrink: 0;">
+              <canvas ref="{{ canvasRef }}" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block;"></canvas>
+            </div>
+          <div style="font-size: 16px; font-weight: 500; letter-spacing: 0.2px; color: rgba(240,238,252,0.95); text-align: left">{{ navMessage }}</div></div>
+
+          <!-- primary suggestion: large card -->
+          <div style="position: relative; border-radius: 26px; padding: 20px 20px 16px; background: #0d0f18; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 14px;" onClick="{{ swallow }}">
+
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <!-- mini map tile -->
+              <div style="width: 56px; height: 56px; border-radius: 14px; background: #151827; position: relative; overflow: hidden; flex-shrink: 0; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);">
+                <!-- park block -->
+                <div style="position: absolute; left: -8px; top: -8px; width: 26px; height: 24px; border-radius: 6px; background: rgba(61,220,151,0.14); transform: rotate(-8deg);"></div>
+                <!-- water corner -->
+                <div style="position: absolute; right: -12px; bottom: -12px; width: 30px; height: 26px; border-radius: 8px; background: rgba(90,140,255,0.14); transform: rotate(10deg);"></div>
+                <!-- main road -->
+                <div style="position: absolute; top: 24px; left: -8px; right: -8px; height: 6px; background: rgba(215,220,245,0.16); transform: rotate(-14deg);"></div>
+                <!-- cross streets -->
+                <div style="position: absolute; top: -6px; bottom: -6px; left: 32px; width: 4px; background: rgba(215,220,245,0.10); transform: rotate(12deg);"></div>
+                <div style="position: absolute; top: -6px; bottom: -6px; left: 12px; width: 3px; background: rgba(215,220,245,0.07); transform: rotate(12deg);"></div>
+                <div style="position: absolute; top: 44px; left: -8px; right: -8px; height: 3px; background: rgba(215,220,245,0.07); transform: rotate(-14deg);"></div>
+                <!-- pin -->
+                <div style="position: absolute; left: 50%; top: 52%; transform: translate(-50%, -20%); width: 10px; height: 4px; border-radius: 50%; background: rgba(0,0,0,0.5);"></div>
+                <div style="position: absolute; left: 50%; top: 52%; transform: translate(-50%, -100%); width: 16px; height: 16px; border-radius: 50% 50% 50% 0; background: #8c9bff; rotate: -45deg; box-shadow: 0 0 8px rgba(140,155,255,0.6);"></div>
+                <div style="position: absolute; left: 50%; top: 38%; transform: translate(-50%, -50%); width: 5px; height: 5px; border-radius: 50%; background: #0d0f18;"></div>
+              </div>
+
+              <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px;">
+                <div style="font-size: 16px; font-weight: 700; color: rgba(250,248,255,0.97);">Driftwood Coffee</div>
+                <div style="font-size: 12px; color: rgba(210,212,230,0.55);">412 Alder St, Portland</div>
+                <div style="font-size: 12px; font-weight: 600; color: #3ddc97;">Open · closes 6 pm</div>
+              </div>
+
+              <div style="text-align: right; display: flex; flex-direction: column; gap: 5px; flex-shrink: 0;">
+                <div style="font-size: 16px; font-weight: 700; color: #8c9bff;">6 min</div>
+                <div style="font-size: 12px; color: rgba(210,212,230,0.55);">0.4 mi</div>
+              </div>
+            </div>
+
+            <div style="font-size: 13px; line-height: 1.55; color: rgba(220,222,238,0.8);"><span style="color: #f0b53e; font-weight: 600;">★ 4.7</span><span style="color: #8c9bff; font-weight: 600;"> · $$</span> &nbsp;“Best oat-milk latte in the neighborhood — and the line moves fast.”</div>
+
+            <div style="position: relative; padding: 14px 0; border-radius: 999px; text-align: center; font-size: 16px; font-weight: 700; letter-spacing: 0.3px; color: #ffffff; background: #5b6bf5; cursor: pointer;" style-active="transform: scale(0.98)" style-hover="filter: brightness(1.1)" onClick="{{ letsGo }}">Let's go</div>
+          </div>
+
+          <!-- secondary suggestion: compact row -->
+          <div style="position: relative; border-radius: 20px; padding: 12px 14px; background: #0d0f18; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06); display: flex; align-items: center; gap: 12px;" onClick="{{ swallow }}">
+
+            <!-- mini map tile -->
+            <div style="width: 38px; height: 38px; border-radius: 10px; background: #151827; position: relative; overflow: hidden; flex-shrink: 0; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);">
+              <!-- park block -->
+              <div style="position: absolute; left: -6px; top: -6px; width: 18px; height: 16px; border-radius: 5px; background: rgba(61,220,151,0.14); transform: rotate(-8deg);"></div>
+              <!-- main road -->
+              <div style="position: absolute; top: 17px; left: -6px; right: -6px; height: 4px; background: rgba(215,220,245,0.16); transform: rotate(12deg);"></div>
+              <!-- cross street -->
+              <div style="position: absolute; top: -4px; bottom: -4px; left: 22px; width: 3px; background: rgba(215,220,245,0.09); transform: rotate(-10deg);"></div>
+              <!-- pin -->
+              <div style="position: absolute; left: 52%; top: 54%; transform: translate(-50%, -100%); width: 12px; height: 12px; border-radius: 50% 50% 50% 0; background: #8c9bff; rotate: -45deg; box-shadow: 0 0 6px rgba(140,155,255,0.6);"></div>
+              <div style="position: absolute; left: 52%; top: 39%; transform: translate(-50%, -50%); width: 4px; height: 4px; border-radius: 50%; background: #0d0f18;"></div>
+            </div>
+
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+              <div style="font-size: 13px; font-weight: 600; color: rgba(250,248,255,0.95);">Lil’ Cup Café <span style="color: #f0b53e; font-weight: 600;">★ 4.5</span><span style="color: #8c9bff; font-weight: 600;"> · $</span></div>
+              <div style="font-size: 11px; font-weight: 600; color: #ffc65c;">Closing soon · 5 pm <span style="font-weight: 400; color: rgba(210,212,230,0.55);">· 11 min · 0.7 mi</span></div>
+            </div>
+
+            <div style="flex-shrink: 0; padding: 9px 16px; border-radius: 999px; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 0.2px; color: #8c9bff; background: transparent; cursor: pointer; box-shadow: inset 0 0 0 1.5px rgba(140,155,255,0.5);" style-active="transform: scale(0.98)" style-hover="background: rgba(140,155,255,0.10)" onClick="{{ letsGo }}">Go</div>
+          </div>
+        </div>
+      </sc-if>
+
+    <div style="position: absolute; z-index: 2; top: 113px; left: 5px; text-align: center; padding: 0 40px; font-size: 18px; font-weight: 500; line-height: 1.45; letter-spacing: 0.2px; color: #ffffff; pointer-events: none; font-family: 'Space Grotesk', Helvetica, sans-serif">“Navigate to the nearest coffee shop”</div></div>
+
+  </x-import></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 520, &quot;height&quot;: 940 },
+  &quot;orbSize&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 1, &quot;min&quot;: 0.6, &quot;max&quot;: 1.4, &quot;step&quot;: 0.05, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Animation&quot; },
+  &quot;wobble&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 1, &quot;min&quot;: 0.3, &quot;max&quot;: 2.5, &quot;step&quot;: 0.1, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Animation&quot; },
+  &quot;churnSpeed&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 1, &quot;min&quot;: 0.3, &quot;max&quot;: 3, &quot;step&quot;: 0.1, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Animation&quot; },
+  &quot;showNavCard&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Scenario&quot; },
+  &quot;useMic&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Behavior&quot; },
+  &quot;autoDemo&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Behavior&quot; }
+}">
+class Component extends DCLogic {
+  state = { mode: 'listening', navStarted: false };
+
+  constructor(props) {
+    super(props);
+    this.t = 0;
+    this.stateMix = 0; // 0 = listening, 1 = responding
+    this.level = 0;
+    this.micOn = false;
+    this.canvasRef = (node) => {
+      this.canvas = node;
+      if (node) this.startLoop();
+    };
+    // offscreen buffer: the ring is drawn small + sharp, then scaled up blurred
+    this.S = 200;
+    this.off = document.createElement('canvas');
+    this.off.width = this.S;
+    this.off.height = this.S;
+    this.offCtx = this.off.getContext('2d');
+  }
+
+  // aurora palette around the ring: cyan -> blue -> violet -> magenta -> pink
+  colorAt(u) {
+    const stops = [
+      [53, 224, 255], [59, 130, 255], [139, 92, 255],
+      [233, 53, 255], [255, 79, 216], [53, 224, 255]
+    ];
+    u = ((u % 1) + 1) % 1;
+    const f = u * (stops.length - 1);
+    const i = Math.floor(f), fr = f - i;
+    const a = stops[i], b = stops[i + 1];
+    return 'rgb(' + Math.round(a[0] + (b[0] - a[0]) * fr) + ',' +
+      Math.round(a[1] + (b[1] - a[1]) * fr) + ',' +
+      Math.round(a[2] + (b[2] - a[2]) * fr) + ')';
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    clearTimeout(this.cycleTimer);
+  }
+
+  componentDidMount() {
+    this.scheduleCycle();
+    if (this.canvas) this.startLoop();
+    if (this.props.useMic ?? true) this.initMic();
+  }
+
+  async initMic() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const AC = window.AudioContext || window.webkitAudioContext;
+      this.audioCtx = new AC();
+      const src = this.audioCtx.createMediaStreamSource(stream);
+      this.analyser = this.audioCtx.createAnalyser();
+      this.analyser.fftSize = 512;
+      this.analyser.smoothingTimeConstant = 0.6;
+      src.connect(this.analyser);
+      this.audioData = new Uint8Array(this.analyser.fftSize);
+      this.micOn = true;
+      this.forceUpdate();
+    } catch (e) {
+      this.micOn = false;
+    }
+  }
+
+  readLevel() {
+    if (this.micOn && this.analyser) {
+      if (this.audioCtx.state === 'suspended') this.audioCtx.resume();
+      this.analyser.getByteTimeDomainData(this.audioData);
+      let sum = 0;
+      for (let i = 0; i < this.audioData.length; i++) {
+        const s = (this.audioData[i] - 128) / 128;
+        sum += s * s;
+      }
+      const rms = Math.sqrt(sum / this.audioData.length);
+      // soft knee: quiet sounds barely register, speech reads clearly
+      return Math.min(1, Math.max(0, rms * 5 - 0.06));
+    }
+    const t = this.t;
+    if (this.state.mode === 'listening') return 0.10 + 0.06 * Math.sin(t * 1.8);
+    const sp = Math.sin(t * 5.2) * 0.5 + Math.sin(t * 8.7 + 1.3) * 0.35 + Math.sin(t * 2.1) * 0.3;
+    return Math.max(0.08, Math.min(1, 0.35 + sp * 0.45));
+  }
+
+  startLoop() {
+    cancelAnimationFrame(this.raf);
+    const loop = () => {
+      this.raf = requestAnimationFrame(loop);
+      this.draw();
+    };
+    loop();
+  }
+
+  scheduleCycle() {
+    clearTimeout(this.cycleTimer);
+    if (this.props.autoDemo ?? true) {
+      this.cycleTimer = setTimeout(() => {
+        this.setState(s => ({ mode: s.mode === 'listening' ? 'responding' : 'listening' }));
+        this.scheduleCycle();
+      }, 6000);
+    }
+  }
+
+  ringWob(th, ts) {
+    return 0.15 * Math.sin(3 * th + ts * 0.5) +
+      0.09 * Math.sin(5 * th - ts * 0.35 + 1.4) +
+      0.11 * Math.sin(2 * th + ts * 0.75 + 4.1);
+  }
+
+  // soft aurora ring: thick color-graded segments on a small buffer
+  drawRing(ts, mix, amp, level) {
+    const S = this.S, oc = this.offCtx;
+    const TAU = Math.PI * 2;
+    oc.setTransform(1, 0, 0, 1, 0, 0);
+    oc.globalCompositeOperation = 'source-over';
+    oc.clearRect(0, 0, S, S);
+    oc.lineCap = 'round';
+    const c0 = S / 2, Rr = S * 0.30;
+    const K = 72, SUB = 3;
+    const hueShift = ts * 0.03 + mix * 0.2;
+
+    for (let k = 0; k < K; k++) {
+      const u = k / K;
+      oc.strokeStyle = this.colorAt(u + hueShift);
+      // band thickness swells and thins around the ring
+      oc.lineWidth = S * (0.085 + 0.05 * Math.sin(u * TAU * 2 + ts * 0.6)) * (1 + level * 0.25);
+      oc.globalAlpha = 0.75 + 0.2 * Math.sin(u * TAU * 3 - ts * 0.4);
+      oc.beginPath();
+      for (let s = 0; s <= SUB; s++) {
+        const th = (k + s * 1.34) / K * TAU; // overlap segments to avoid gaps
+        const r = Rr * (1 + this.ringWob(th, ts) * amp);
+        const x = c0 + Math.cos(th) * r;
+        const y = c0 + Math.sin(th) * r * 0.97;
+        if (s === 0) oc.moveTo(x, y); else oc.lineTo(x, y);
+      }
+      oc.stroke();
+    }
+    oc.globalAlpha = 1;
+  }
+
+  draw() {
+    const c = this.canvas;
+    if (!c) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = c.offsetWidth, h = c.offsetHeight;
+    if (!w || !h) return;
+    if (c.width !== w * dpr || c.height !== h * dpr) {
+      c.width = w * dpr; c.height = h * dpr;
+    }
+    const ctx = c.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    this.t += 0.016;
+    const t = this.t;
+    const target = this.state.mode === 'listening' ? 0 : 1;
+    this.stateMix += (target - this.stateMix) * 0.03;
+    const mix = this.stateMix;
+
+    const lv = this.readLevel();
+    this.level += (lv - this.level) * (lv > this.level ? 0.35 : 0.08);
+
+    // motion-blur trail over deep indigo
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'rgba(12,9,38,0.30)';
+    ctx.fillRect(0, 0, w, h);
+
+    ctx.globalCompositeOperation = 'lighter';
+
+    const cx = w / 2, cy = h * 0.5;
+    const R = (this.props.orbSize ?? 1) * w * 0.30 * (1 + this.level * 0.03);
+    // gentle baseline wobble; voice adds only a modest swell
+    const amp = (0.85 + this.level * 0.45) * (this.props.wobble ?? 1);
+    const sp = this.props.churnSpeed ?? 1;
+    const ts = t * sp;
+
+    // faint mesh structure behind the orb: warped concentric rings + spokes
+    // (skipped on tiny canvases — just visual noise at that scale)
+    ctx.strokeStyle = 'rgba(170,160,255,0.022)';
+    ctx.lineWidth = 1;
+    const TAU = Math.PI * 2;
+    for (let ri = 0; ri < (w < 120 ? 0 : 7); ri++) {
+      const mr = R * (0.5 + ri * 0.28);
+      ctx.beginPath();
+      for (let s = 0; s <= 72; s++) {
+        const th = s / 72 * TAU;
+        const rr = mr * (1 + 0.04 * Math.sin(3 * th + ts * 0.2 + ri));
+        const x = cx + Math.cos(th) * rr;
+        const y = cy + Math.sin(th) * rr;
+        if (s === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.stroke();
+    }
+    for (let sp = 0; sp < (w < 120 ? 0 : 18); sp++) {
+      const th = sp / 18 * TAU + 0.03 * Math.sin(ts * 0.15 + sp);
+      ctx.beginPath();
+      ctx.moveTo(cx + Math.cos(th) * R * 0.5, cy + Math.sin(th) * R * 0.5);
+      ctx.lineTo(cx + Math.cos(th) * R * 2.18, cy + Math.sin(th) * R * 2.18);
+      ctx.stroke();
+    }
+
+    this.drawRing(ts, mix, amp, this.level);
+
+    // scale the small sharp ring up as one heavy blurred pass (colors stay saturated)
+    ctx.globalCompositeOperation = 'source-over';
+    const size = (R / (this.S * 0.30)) * this.S;
+    ctx.filter = 'blur(' + Math.round(size * 0.045) + 'px)';
+    ctx.globalAlpha = 1;
+    ctx.drawImage(this.off, cx - size / 2, cy - size / 2, size, size);
+    // faint tighter pass for a hint of definition
+    ctx.filter = 'blur(' + Math.max(2, Math.round(size * 0.012)) + 'px)';
+    ctx.globalAlpha = 0.3;
+    ctx.drawImage(this.off, cx - size / 2, cy - size / 2, size, size);
+    ctx.filter = 'none';
+    ctx.globalAlpha = 1;
+  }
+
+  renderVals() {
+    const listening = this.state.mode === 'listening';
+    return {
+      canvasRef: this.canvasRef,
+      toggleState: () => {
+        this.setState(s => ({ mode: s.mode === 'listening' ? 'responding' : 'listening' }));
+        this.scheduleCycle();
+      },
+      blueGlow: listening ? 1 : 0.45,
+      greenGlow: listening ? 0.45 : 1,
+      stateLabel: listening ? 'Listening\u2026' : 'Responding\u2026',
+      labelColor: listening ? 'rgba(255,140,210,0.9)' : 'rgba(255,185,130,0.9)',
+      micHint: this.micOn ? 'mic live \u2014 speak to see the orb react' : 'tap anywhere to switch',
+      navVisible: this.props.showNavCard ?? true,
+      labelVisible: !(this.props.showNavCard ?? true),
+      orbOpacity: (this.props.showNavCard ?? true) ? 0.45 : 1,
+      orbBlur: (this.props.showNavCard ?? true) ? 'blur(14px)' : 'none',
+      navMessage: this.state.navStarted ? 'Starting navigation\u2026' : 'Found 2 nearby ',
+      swallow: (e) => e.stopPropagation(),
+      letsGo: (e) => { e.stopPropagation(); this.setState({ navStarted: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
